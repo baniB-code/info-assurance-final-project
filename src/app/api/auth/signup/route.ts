@@ -21,8 +21,18 @@ export async function POST(req: Request) {
     });
 
     if (error || !data.user) {
+      const msg = error?.message ?? "Unable to create account.";
+      if (msg.toLowerCase().includes("already")) {
+        return NextResponse.json({ error: "Email is already registered." }, { status: 400 });
+      }
+      if (msg.toLowerCase().includes("signup")) {
+        return NextResponse.json(
+          { error: "Signup is currently disabled in Supabase Auth settings." },
+          { status: 400 },
+        );
+      }
       return NextResponse.json(
-        { error: "Unable to create account." },
+        { error: msg },
         { status: 400 },
       );
     }
@@ -56,7 +66,11 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ ok: true });
-  } catch {
-    return NextResponse.json({ error: "Unable to create account." }, { status: 400 });
+  } catch (err) {
+    console.error("Signup route error:", err);
+    return NextResponse.json(
+      { error: "Unable to create account. Please verify your inputs and Auth settings." },
+      { status: 400 },
+    );
   }
 }
