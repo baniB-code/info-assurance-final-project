@@ -27,6 +27,13 @@ export default function Home() {
           </Link>
         </div>
       </div>
+      <div className="mt-5 text-center">
+        <p className="text-xs uppercase tracking-[0.16em] text-slate-500">Developers</p>
+        <p className="mt-2 text-sm text-slate-600">
+          Carpio, Isaiah James R. · Hermino, Christian D. · Ramos, Mitzie Anne V. ·
+          Moncada, Evann Luke F.
+        </p>
+      </div>
       <p className="mt-6 text-xs text-slate-400">
         Built with Next.js, Supabase, Tailwind CSS, and secure-by-default patterns.
       </p>
