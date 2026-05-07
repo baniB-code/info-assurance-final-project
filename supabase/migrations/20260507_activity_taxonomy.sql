@@ -1,0 +1,27 @@
+alter table public.auth_activity_log
+drop constraint if exists auth_activity_log_event_type_check;
+
+alter table public.auth_activity_log
+add constraint auth_activity_log_event_type_check check (
+  event_type in (
+    'SUCCESS',
+    'FAILED',
+    'LOCKED',
+    'AUTH_LOGIN_SUCCESS',
+    'AUTH_LOGIN_FAILED',
+    'AUTH_LOCKED',
+    'AUTH_LOGOUT',
+    'AUTH_SIGNUP',
+    'AUTH_PASSWORD_RESET_REQUESTED',
+    'NOTE_CREATED',
+    'NOTE_UPDATED',
+    'NOTE_PINNED',
+    'NOTE_UNPINNED',
+    'NOTE_ARCHIVED',
+    'NOTE_UNARCHIVED',
+    'NOTE_TRASHED',
+    'NOTE_DELETED_PERMANENTLY',
+    'PROFILE_UPDATED',
+    'PASSWORD_CHANGED'
+  )
+);
