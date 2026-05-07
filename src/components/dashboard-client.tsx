@@ -186,7 +186,7 @@ export function DashboardClient({
   );
 
   return (
-    <div className="mx-auto flex min-h-[calc(100vh-6rem)] w-full max-w-[1400px] bg-[#f6f6f6]">
+    <div className="mx-auto flex min-h-[calc(100vh-6rem)] w-full max-w-[1400px] flex-col bg-[#f6f6f6] lg:flex-row">
       <aside className="hidden w-56 border-r border-slate-200 bg-[#f1f1f1] lg:block">
         <div className="border-b border-slate-200 p-4">
           <div className="flex items-center gap-2">
@@ -242,10 +242,10 @@ export function DashboardClient({
         </div>
       </aside>
 
-      <section className="w-[330px] border-r border-slate-200 bg-[#f5f5f5]">
+      <section className="w-full border-r border-slate-200 bg-[#f5f5f5] lg:w-[330px]">
         <div className="border-b border-slate-200 p-3">
           <div className="mb-3 flex items-center justify-between">
-            <button className="rounded p-1 text-slate-700">☰</button>
+            <p className="text-sm font-semibold text-slate-700 lg:hidden">Notes</p>
             <button
               onClick={createQuickNote}
               className="rounded p-1 text-xl leading-none text-slate-900"
@@ -276,8 +276,56 @@ export function DashboardClient({
             placeholder="Search notes..."
             className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400"
           />
+          <div className="mt-3 grid grid-cols-2 gap-2 lg:hidden">
+            <button
+              onClick={() => switchView("all")}
+              className={`rounded-md border px-3 py-2 text-xs font-medium ${
+                viewMode === "all"
+                  ? "border-slate-300 bg-slate-200 text-slate-900"
+                  : "border-slate-200 bg-white text-slate-700"
+              }`}
+            >
+              All
+            </button>
+            <button
+              onClick={() => switchView("starred")}
+              className={`rounded-md border px-3 py-2 text-xs font-medium ${
+                viewMode === "starred"
+                  ? "border-slate-300 bg-slate-200 text-slate-900"
+                  : "border-slate-200 bg-white text-slate-700"
+              }`}
+            >
+              Starred
+            </button>
+            <button
+              onClick={() => switchView("archived")}
+              className={`rounded-md border px-3 py-2 text-xs font-medium ${
+                viewMode === "archived"
+                  ? "border-slate-300 bg-slate-200 text-slate-900"
+                  : "border-slate-200 bg-white text-slate-700"
+              }`}
+            >
+              Archived
+            </button>
+            <button
+              onClick={() => switchView("trash")}
+              className={`rounded-md border px-3 py-2 text-xs font-medium ${
+                viewMode === "trash"
+                  ? "border-slate-300 bg-slate-200 text-slate-900"
+                  : "border-slate-200 bg-white text-slate-700"
+              }`}
+            >
+              Trash
+            </button>
+            <button
+              onClick={() => setShowActivityLog(true)}
+              className="col-span-2 rounded-md border border-slate-200 bg-white px-3 py-2 text-xs font-medium text-slate-700"
+            >
+              Activity Log
+            </button>
+          </div>
         </div>
-        <div className="max-h-[72vh] overflow-y-auto">
+        <div className="max-h-[40vh] overflow-y-auto lg:max-h-[72vh]">
           {filteredNotes.map((note) => (
             <button
               key={note.id}
@@ -306,16 +354,16 @@ export function DashboardClient({
       <section className="flex-1 bg-white">
         {selectedNote ? (
           <>
-            <div className="flex items-center justify-between border-b border-slate-200 px-6 py-3">
-              <div className="flex items-center gap-2">
+            <div className="flex flex-col gap-3 border-b border-slate-200 px-4 py-3 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
+              <div className="flex min-w-0 items-center gap-2">
                 <span className="text-slate-400">✎</span>
                 <input
                   value={editingTitle}
                   onChange={(e) => setEditingTitle(e.target.value)}
-                  className="w-[420px] border-none bg-transparent text-2xl font-semibold text-slate-900 outline-none"
+                  className="w-full min-w-0 border-none bg-transparent text-xl font-semibold text-slate-900 outline-none sm:text-2xl lg:max-w-[420px]"
                 />
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 {viewMode !== "trash" && (
                   <button
                     onClick={() => togglePinned(selectedNote)}
@@ -359,7 +407,7 @@ export function DashboardClient({
               value={editingContent}
               onChange={(e) => setEditingContent(e.target.value)}
               placeholder="Write your secure note here..."
-              className="min-h-[68vh] w-full resize-none border-none bg-white px-14 py-8 text-lg leading-9 text-slate-900 outline-none"
+              className="min-h-[50vh] w-full resize-none border-none bg-white px-4 py-4 text-base leading-7 text-slate-900 outline-none sm:px-8 sm:py-6 sm:text-lg sm:leading-8 lg:min-h-[68vh] lg:px-14 lg:py-8 lg:leading-9"
             />
           </>
         ) : (

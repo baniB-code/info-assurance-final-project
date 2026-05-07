@@ -32,12 +32,12 @@ export default async function ProfilePage() {
   ]);
 
   return (
-    <main className="mx-auto min-h-screen w-full max-w-4xl bg-[#f6f6f6] px-6 py-10">
+    <main className="mx-auto min-h-screen w-full max-w-4xl bg-[#f6f6f6] px-4 py-8 sm:px-6 sm:py-10">
       <Link href="/dashboard" className="text-sm text-cyan-600">
         Back to Dashboard
       </Link>
-      <h1 className="mt-3 text-5xl font-bold text-slate-900">Profile Settings</h1>
-      <p className="mb-6 text-xl text-slate-500">{user.email}</p>
+      <h1 className="mt-3 text-3xl font-bold text-slate-900 sm:text-5xl">Profile Settings</h1>
+      <p className="mb-6 break-all text-base text-slate-500 sm:text-xl">{user.email}</p>
       <ProfileClient
         email={user.email ?? ""}
         initialDisplayName={profile?.display_name ?? user.user_metadata?.display_name ?? ""}

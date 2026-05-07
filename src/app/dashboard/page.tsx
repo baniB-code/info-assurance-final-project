@@ -28,17 +28,17 @@ export default async function DashboardPage() {
 
   return (
     <main className="bg-[#f6f6f6]">
-      <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between px-6 py-3">
+      <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-6">
         <div>
           <p className="text-xs uppercase tracking-[0.15em] text-slate-400">Dashboard</p>
-          <h1 className="text-2xl font-bold text-slate-900">
+          <h1 className="text-xl font-bold text-slate-900 sm:text-2xl">
             Welcome, {profile?.display_name ?? user.user_metadata?.display_name ?? "User"}
           </h1>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex w-full items-center gap-2 sm:w-auto">
           <a
             href="/profile"
-            className="inline-flex h-9 items-center justify-center rounded-md border border-slate-300 bg-white px-4 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/40"
+            className="inline-flex h-9 flex-1 items-center justify-center rounded-md border border-slate-300 bg-white px-4 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/40 sm:flex-none"
           >
             Profile
           </a>

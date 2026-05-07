@@ -133,7 +133,7 @@ export function ProfileClient({
 
   return (
     <div className="mx-auto max-w-3xl space-y-5">
-      <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      <section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
         <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
           <div className="flex h-24 w-24 items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-slate-100">
             {avatarUrl ? (
@@ -170,8 +170,8 @@ export function ProfileClient({
         <StatCard label="Activity" value={stats.activityEvents} />
       </section>
 
-      <form onSubmit={saveProfile} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h2 className="text-2xl font-semibold text-slate-900">Public Profile</h2>
+      <form onSubmit={saveProfile} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
+        <h2 className="text-xl font-semibold text-slate-900 sm:text-2xl">Public Profile</h2>
         <p className="mt-1 text-sm text-slate-500">Update your account identity details.</p>
         <input
           value={displayName}
@@ -195,8 +195,8 @@ export function ProfileClient({
         </button>
       </form>
 
-      <form onSubmit={changePassword} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h2 className="text-2xl font-semibold text-slate-900">Change Password</h2>
+      <form onSubmit={changePassword} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
+        <h2 className="text-xl font-semibold text-slate-900 sm:text-2xl">Change Password</h2>
         <p className="mt-1 text-sm text-slate-500">
           Use a strong new password (8+, uppercase, lowercase, number, symbol).
         </p>

@@ -81,7 +81,7 @@ export function AuthClient({ initialMode }: { initialMode: "login" | "signup" })
   };
 
   return (
-    <main className="flex min-h-screen">
+    <main className="flex min-h-screen flex-col lg:flex-row">
       <section className="relative hidden flex-1 overflow-hidden bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 lg:flex">
         <div className="absolute inset-0 opacity-20 [background-image:radial-gradient(white_1px,transparent_1px)] [background-size:24px_24px]" />
         <div className="relative z-10 m-auto max-w-md px-10 text-white">
@@ -100,9 +100,9 @@ export function AuthClient({ initialMode }: { initialMode: "login" | "signup" })
         </div>
       </section>
 
-      <section className="flex flex-1 items-center justify-center bg-[#f8f8f8] px-6 py-10">
+      <section className="flex flex-1 items-center justify-center bg-[#f8f8f8] px-4 py-8 sm:px-6 sm:py-10">
         <div className="w-full max-w-md">
-          <h2 className="mb-4 text-center text-3xl font-semibold text-slate-900">
+          <h2 className="mb-3 text-center text-2xl font-semibold text-slate-900 sm:mb-4 sm:text-3xl">
             {mode === "login" ? "Welcome Back" : "Create Account"}
           </h2>
           <p className="mb-6 text-center text-sm text-slate-500">
@@ -150,13 +150,13 @@ export function AuthClient({ initialMode }: { initialMode: "login" | "signup" })
               <button
                 type="button"
                 onClick={() => setShowPassword((v) => !v)}
-                className="absolute right-2 top-[68%] -translate-y-1/2 rounded-md border border-slate-300 px-2 py-1 text-xs"
+                className="absolute right-2 top-[69%] -translate-y-1/2 rounded-md border border-slate-300 px-2 py-1 text-xs"
               >
                 {showPassword ? "Hide" : "Show"}
               </button>
             </div>
             {mode === "login" && (
-              <div className="flex items-center justify-between text-sm">
+              <div className="flex flex-wrap items-center justify-between gap-2 text-sm">
                 <label className="flex items-center gap-2 text-slate-600">
                   <input
                     checked={rememberMe}
@@ -202,8 +202,8 @@ export function AuthClient({ initialMode }: { initialMode: "login" | "signup" })
       </section>
 
       {forgotOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/35 p-4 backdrop-blur-sm">
-          <div className="w-full max-w-sm rounded-xl border border-slate-200 bg-white p-5 shadow-xl">
+        <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/35 p-3 backdrop-blur-sm sm:items-center sm:p-4">
+          <div className="w-full max-w-sm rounded-xl border border-slate-200 bg-white p-4 shadow-xl sm:p-5">
             <h3 className="text-lg font-semibold text-slate-900">Reset Password</h3>
             <p className="mt-1 text-sm text-slate-600">
               Enter your email and we will send a reset link.
